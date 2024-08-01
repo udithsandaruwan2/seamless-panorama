@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Upload Images</title>
+</head>
+<body>
+    <div class="container">
+        <input type="file" id="file" accept="image/*" multiple hidden>
+        <div class="img-area" id="imgArea">
+            <i class='bx bxs-cloud-upload icon'></i>
+            <h3>Please Upload Images</h3>
+            <p>Each image size must be smaller than <span>2MB</span></p>
+        </div>
+        <button class="select-image">Select Images</button>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

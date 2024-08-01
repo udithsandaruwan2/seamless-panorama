@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Enhanced Panarome Image</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(90deg, #FFFFFF 0%, #90EE90 50%, #005DD1 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .download-button, .upload-button {
+            background-color: #0071FF;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .download-button {
+            background-color: #28a745;
+        }
+        .upload-button {
+            background-color: #FF6F61;
+        }
+        .download-button:hover {
+            background-color: #218838;
+        }
+        .upload-button:hover {
+            background-color: #FF4F40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img style="max-height: 300px; border-radius: 10px; " id="enhancedImage" class="enhanced-image" src="{{ result_image }}" alt="Enhanced Image">
+        <div class="buttons">
+            <button class="download-button" id="downloadButton">Download</button>
+            <button class="upload-button" onclick="uploadNewImage()">Try again</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const displayImage = document.getElementById('displayImage');
+            const uploadedImage = localStorage.getItem('uploadedImage');
+
+            if (uploadedImage) {
+                displayImage.src = uploadedImage;
+            }
+
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.href = enhancedImage.src;
+                link.download = 'enhanced_image.jpg';
+                link.click();
+            });
+        });
+
+        function uploadNewImage() {
+            window.location.href = '/'; 
+        }
+    </script>
+</body>
+</html>
